@@ -2,23 +2,17 @@
 
 require('./Routes.php');
 
-function run()
+
+function Run()
 {
     global $routes;
-
     $uri = $_SERVER['REQUEST_URI'];
-
     foreach ($routes as $path => $callback) {
+
         if ($path !== $uri) {
-            notFound();
+            continue;
         } else {
             $callback();
         }
     }
-}
-
-
-function notFound()
-{
-    echo "404 Not Found";
 }
